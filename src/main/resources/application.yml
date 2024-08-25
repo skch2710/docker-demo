@@ -13,9 +13,9 @@ spring:
   application:
     name: docker-demo
   datasource:
-    url: ${JDBC_CONNECTION_STRING}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://172.20.70.149:9001/mydatabase
+    username: postgres
+    password: Sathish123
     driver-class-name: org.postgresql.Driver
     hikari:
       minimum-idle: 10
