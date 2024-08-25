@@ -1,0 +1,57 @@
+server:
+  port: 8068
+  forward-headers-strategy: framework
+  max-http-request-header-size: 200000000
+  tomcat:
+    max-http-form-post-size: 200000000
+    max-swallow-size: 200000000
+
+spring:
+  jackson:
+    serialization:
+        FAIL_ON_EMPTY_BEANS: false
+  application:
+    name: docker-demo
+  datasource:
+    url: ${JDBC_CONNECTION_STRING}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 50
+      idle-timeout: 300000 # 5 minutes
+      max-lifetime: 1800000 # 30 minutes
+      connection-timeout: 30000 # 30 seconds
+      validation-timeout: 5000 # 5 seconds
+      leak-detection-threshold: 200000 # 200 seconds (approx 3.33 minutes)
+      pool-name: SpringBootHikariCP
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+      
+app:
+  timezone: "Asia/Kolkata"
+  
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type: TRACE
+#      springframework:
+#        jdbc:
+#          core:
+#            JdbcTemplate: DEBUG
+#            StatementCreatorUtils: TRACE
+#        security: DEBUG
+#        cache: DEBUG
+#        aop: DEBUG
+
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true

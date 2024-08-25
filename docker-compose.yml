@@ -2,17 +2,18 @@ version: '3.8'
 
 services:
   springboot-app:
-    # Use the image name as 'myapp'
-    image: docker-demo:latest  # You can name this as per your application, e.g., 'my-custom-app:latest'
+    # Use the image name as 'docker-demo'
+    image: docker-demo:latest
     container_name: docker-demo
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8068:8068"
-    #environment:
-      # Optionally set environment variables for your Spring Boot application
-      # SPRING_PROFILES_ACTIVE: prod
+    environment:
+      JDBC_CONNECTION_STRING: jdbc:postgresql://172.20.70.149:9001/mydatabase
+      DB_USERNAME: postgres
+      DB_PASSWORD: Sathish123
     networks:
       - springboot-network
 
