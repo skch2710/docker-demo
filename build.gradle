@@ -8,9 +8,10 @@ group = 'com.docker'
 version = '1.0'
 
 java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
 }
 
 configurations {
@@ -20,7 +21,8 @@ configurations {
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    gradlePluginPortal() // Include this for toolchain repository if needed
 }
 
 dependencies {
